@@ -8,6 +8,16 @@ import HookMouse from './Components/HookMouse';
 import MouseContainer from './Components/MouseContainer';
 import IntervalHookCounter from './Components/IntervalHookCounter';
 import DataFetching from './Components/DataFetching'
+import ComponentC from './Components/ComponentC'
+import ComponentE from './Components/ComponentE'
+import ReducerCounter from './Components/ReducerCounter';
+import ReducerCounterTwo from './Components/ReducerCounterTwo'
+import ReducerCounterThree from './Components/ReducerCounterThree'
+import ReducerApp from './Components/ReducerApp'
+
+
+export const UserContext = React.createContext()
+export const ChannelContext = React.createContext()
 
 function Todo({ todo, index, completeTodo, deleteTodo }) {
   return(
@@ -71,8 +81,20 @@ function App() {
     setTodos(newTodos);
   };
 
+
+
+
+  
+
   return (
     <div className="app">
+      <h3>Component C:</h3>
+      <UserContext.Provider value={'Vishwas'}>
+        <ChannelContext.Provider value={'Codevolution'}>
+          <ComponentC />
+        </ChannelContext.Provider>     
+      </UserContext.Provider>
+      
       <div className="todo-list">
         {todos.map((todo, index) => (
           <Todo key={index} index={index} todo={todo} completeTodo={completeTodo} deleteTodo={deleteTodo} />
@@ -102,6 +124,12 @@ function App() {
       </div>
       <div>
         <DataFetching />
+      </div>
+      <div>
+        <ReducerCounterThree />
+      </div>
+      <div>
+        <ReducerApp />
       </div>
     </div>
   )
